@@ -29,5 +29,3 @@ def run_bronze(ano_inicio: int = 2021):
     except Exception as e:
         logging.critical(f"Falha no orquestrador da Camada Bronze: {e}")
         raise e
-
-run_bronze()
