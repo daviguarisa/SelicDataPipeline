@@ -1,7 +1,7 @@
+from brdata.bacen.boletim_focus import BoletimFocus
 import logging
 
-from brdata.bacen.boletim_focus import BoletimFocus
-from medal.extractors import bronze_focus
+from medal.extractors import bronze_focus, bronze_selic
 
 logging.basicConfig(
     level=logging.INFO, 
@@ -24,6 +24,11 @@ def run_bronze(ano_inicio: int = 2021):
             ano_inicio=ano_inicio
         )
 
+        logging.info("--> Executando extração da Selic Meta... ")
+        bronze_selic(
+            ano_inicio=ano_inicio
+        )
+        
         logging.info("Camada Bronze concluída com sucesso!")
 
     except Exception as e:
