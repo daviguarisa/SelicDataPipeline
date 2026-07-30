@@ -1,1 +1,1 @@
-from .utils import gerar_semestres
+from .utils import gerar_trimestres

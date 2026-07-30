@@ -1,26 +1,31 @@
 from brdata.bacen.boletim_focus import BoletimFocus
-from medal.utils import gerar_semestres
 from tqdm import tqdm
+import logging
 
-focus = BoletimFocus()
+from medal.utils import gerar_trimestres
 
-def bronze_focus(focus: BoletimFocus):
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+def bronze_focus(
+    focus: BoletimFocus,
+    ano_inicio: int = 2021,
+    indicador: str = "Selic",
+    output_path: str = "data/bronze/focus"
+) -> None:
     """
     Extrai informações de expectativas anuais do boletim focus a cada semestre desde 2021.
     A extração é feita com a biblioteca brdata.
     """
+    intervalos = list(gerar_trimestres(ano_inicio))
 
-    try:
-        intervalos = list(gerar_semestres(2021))
-        for inicio, fim in tqdm(intervalos, desc="Processando Focus", unit="semestre"):
+    for inicio, fim in tqdm(intervalos, desc="Processando Focus", unit="trimestre"):
+        try:
             focus.expectativas_anuais(
-                indicador="Selic",
+                indicador=indicador,
                 start_date=inicio,
                 end_date=fim,
                 top=10000,
-                path="data/raw/focus"
+                path=output_path
             )
-    except Exception as e:
-        print("Erro: {e}")
-
-bronze_focus(focus=focus)
+        except Exception as e:
+            logging.error(f"Falha ao extrair período {inicio} até {fim}: {e}")
