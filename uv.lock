@@ -17,7 +17,7 @@ wheels = [
 
 [[package]]
 name = "brasil-data"
-version = "3.0.1"
+version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -25,9 +25,9 @@ dependencies = [
     { name = "requests" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8f/2f/a1b96c9f888bb4065d0c2065cd7cdd025ae0518fedda3edbaf446c8131f2/brasil_data-3.0.1.tar.gz", hash = "sha256:58b7a51bb05808c30981e46957babeb34b659def337e4450f9cb82cda0fced0d", size = 50163, upload-time = "2026-07-27T14:20:46.99Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a8/7b/e4281bc33e63a39be072e6ae3c9413f6684328123bdd8581b7f3f41f2654/brasil_data-4.0.0.tar.gz", hash = "sha256:2f30870070c196433d8908bfaeb2842421f7b416373146af290bd4d86cae699c", size = 50333, upload-time = "2026-08-03T14:18:08.335Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/22/ed/ab57871a98574121e0bb6ac420f9b7ff56a406d550f51048b55ca2c12a83/brasil_data-3.0.1-py3-none-any.whl", hash = "sha256:f744ed129276dc62f63d2edc636791d9db9e8d37ee337b0863c1100d79ebb7c9", size = 12536, upload-time = "2026-07-27T14:20:46.175Z" },
+    { url = "https://files.pythonhosted.org/packages/14/54/ff6b3a5edba4a5c7e69156adb77bff6bf3cdc9f26ed3974c5552dad03aa5/brasil_data-4.0.0-py3-none-any.whl", hash = "sha256:f3d99f67183f6363e6b8c876cb4cd957de620e070aea590b8c50f311d5ab4969", size = 12619, upload-time = "2026-08-03T14:18:07.343Z" },
 ]
 
 [[package]]

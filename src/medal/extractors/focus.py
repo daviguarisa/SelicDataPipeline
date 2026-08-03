@@ -13,12 +13,12 @@ def bronze_focus(
     output_path: str = "data/bronze/focus"
 ) -> None:
     """
-    Extrai informações de expectativas anuais do boletim focus a cada semestre desde 2021.
+    Extrai informações de expectativas anuais do boletim focus a cada trimestre desde 2021.
     A extração é feita com a biblioteca brdata.
     """
     intervalos = list(gerar_trimestres(ano_inicio))
 
-    for inicio, fim in tqdm(intervalos, desc="Processando Focus", unit="trimestre"):
+    for inicio, fim in tqdm(intervalos, desc="Extraindo Focus", unit="trimestre"):
         try:
             focus.expectativas_anuais(
                 indicador=indicador,
