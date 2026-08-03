@@ -1,8 +1,5 @@
 from brdata.bacen.selic import fetch_selic
 import logging
-from tqdm import tqdm
-
-from medal.utils import gerar_trimestres
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -11,18 +8,16 @@ def bronze_selic(
         output_path: str = "data/bronze/selic"
 ) -> None:
     """
-    Extrai informações de expectativas anuais do boletim focus a cada trimestre desde 2021.
+    Extrai informações da selic meta desde o ano informado até a data atual.
     A extração é feita com a biblioteca brdata.
     """
-    intervalos = list(gerar_trimestres(ano_inicio=ano_inicio))
-
-    for inicio, fim in tqdm(intervalos, desc="Extraindo Selic", unit="trimestre"):
-        try:
-            fetch_selic(
-                category="meta",
-                start_date=inicio,
-                end_date=fim,
-                path=output_path
-            )
-        except Exception as e:
-            logging.error(f"Falha ao extrair período {inicio} até {fim}: {e}")
+    data_inicio = f"{ano_inicio}-01-01"
+    try:
+        fetch_selic(
+            category="meta",
+            start_date=data_inicio,
+            path=output_path
+        )
+        logging.info("Extração Selic Meta bem sucedida!")
+    except Exception as e:
+        logging.error(f"Falha ao extrair Selic Meta: {e}")
