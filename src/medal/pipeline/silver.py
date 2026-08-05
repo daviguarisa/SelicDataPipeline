@@ -8,7 +8,7 @@ logging.basicConfig(
 
 def run_silver():
     """
-    Função Orquestradora da Camada Bronze.
+    Função Orquestradora da Camada Silver.
     Executa a leitura e transformações das fontes (Focus e Selic).
     """
     logging.info("Iniciando pipeline da Camada Silver")
