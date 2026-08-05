@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "brasil-data>=3.0.1",
+    "duckdb>=1.5.5",
     "logging>=0.4.9.6",
     "pandas>=3.0.5",
     "pathlib>=1.0.1",
