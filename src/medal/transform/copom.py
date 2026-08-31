@@ -56,16 +56,20 @@ def transform_copom_silver(
 
     df["vigencia_inicio"] = pd.to_datetime(
         vigencia_split[0].str.strip(), format="%d/%m/%Y", errors="coerce"
-    ).dt.strftime("%Y-%m-%d")
+    ).dt.date
 
     df["vigencia_fim"] = pd.to_datetime(
         vigencia_split[1].str.strip(), format="%d/%m/%Y", errors="coerce"
-    ).dt.strftime("%Y-%m-%d")
+    ).dt.date
 
-    colunas_para_remover = ["vigencia", "vies", "tban"]
-    df.drop(columns=colunas_para_remover, inplace=True, errors="ignore")
+    colunas_float = ["meta_selic", "taxa_selic_pct", "taxa_selic_aa"]
+    for col in colunas_float:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce").round(2)
 
-    colunas_ordenadas = [
+    df.drop(columns=["vigencia", "vies", "tban"], inplace=True, errors="ignore")
+
+    colunas = [
         "reuniao_num",
         "reuniao_data",
         "vigencia_inicio",
@@ -74,7 +78,7 @@ def transform_copom_silver(
         "taxa_selic_pct",
         "taxa_selic_aa",
     ]
-    df = df[colunas_ordenadas]
+    df = df[colunas]
 
     # Salva em Parquet
     df.to_parquet(output_file, index=False, engine="pyarrow")

@@ -29,3 +29,4 @@ def run_silver():
         logging.critical(f"Falha no orquestrador da Camada Silver: {e}")
         raise e
 
+run_silver()

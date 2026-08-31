@@ -17,7 +17,9 @@ def run_gold():
     try:
         with connect() as conn:
             logging.info("--> Criando tabelas Gold")
-            create_table(conn, "queries/focus_vs_selic.sql", "focus_vs_selic")
+            create_table(conn, "queries/focus_gold.sql", "focus")
+            create_table(conn, "queries/selic_gold.sql", "selic")
+            create_table(conn, "queries/copom_gold.sql", "copom")
     except Exception as e:
         logging.error(f"Falha na execução de tabelas gold: {e}")
 
