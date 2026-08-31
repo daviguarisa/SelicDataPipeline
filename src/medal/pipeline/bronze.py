@@ -1,7 +1,7 @@
 from brdata.bacen.boletim_focus import BoletimFocus
 import logging
 
-from medal.extractors import bronze_focus, bronze_selic
+from medal.extractors import bronze_focus, bronze_selic, bronze_copom
 
 logging.basicConfig(
     level=logging.INFO, 
@@ -28,6 +28,9 @@ def run_bronze(ano_inicio: int = 2021):
         bronze_selic(
             ano_inicio=ano_inicio
         )
+
+        logging.info("--> Executando extração da Tabela Copom... ")
+        bronze_copom()
         
         logging.info("Camada Bronze concluída com sucesso!")
 
