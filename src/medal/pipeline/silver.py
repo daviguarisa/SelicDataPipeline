@@ -1,4 +1,4 @@
-from medal.transform import transform_focus_silver, transform_selic_silver
+from medal.transform import transform_focus_silver, transform_selic_silver, transform_copom_silver
 import logging
 
 logging.basicConfig(
@@ -20,10 +20,12 @@ def run_silver():
         logging.info("--> Executando Transformação da Selic Meta")
         transform_selic_silver()
 
+        logging.info("--> Executando Transformação da Tabela Copom")
+        transform_copom_silver()
+
         logging.info("Camada Silver concluída com sucesso!")
 
     except Exception as e:
         logging.critical(f"Falha no orquestrador da Camada Silver: {e}")
         raise e
 
-run_silver()
