@@ -23,4 +23,3 @@ def run_gold():
     except Exception as e:
         logging.error(f"Falha na execução de tabelas gold: {e}")
 
-run_gold()

@@ -14,4 +14,4 @@ def bronze_copom(
         fetch_copom_table(path=output_path)
         logging.info("Extração Tabela Copom bem sucedida!")
     except Exception as e:
-        logging.error(f"Falha ao extrair Selic Meta: {e}")
+        logging.error(f"Falha ao extrair Tabela Copom: {e}")

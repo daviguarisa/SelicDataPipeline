@@ -11,7 +11,7 @@ logging.basicConfig(
 def run_bronze(ano_inicio: int = 2021):
     """
     Função Orquestradora da Camada Bronze.
-    Instancia as conexões e executa a extração das fontes (Focus e Selic).
+    Instancia as conexões e executa a extração das fontes (Focus, Selic e Copom).
     """
     logging.info("Iniciando pipeline da Camada Bronze")
 
