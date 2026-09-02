@@ -49,8 +49,8 @@ def transform_copom_silver(
     )
 
     df["reuniao_data"] = pd.to_datetime(
-        df["reuniao_data"], format="%d/%m/%Y"
-    ).dt.strftime("%Y-%m-%d")
+        df["reuniao_data"], format="%d/%m/%Y", errors="coerce"
+    ).dt.date
 
     vigencia_split = df["vigencia"].str.split("-", expand=True)
 
