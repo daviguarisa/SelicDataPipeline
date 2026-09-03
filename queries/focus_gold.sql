@@ -1,11 +1,16 @@
 WITH focus_clean AS (
     SELECT 
-        CAST(data AS DATE) AS data_referencia,
-        indicador,
-        mediana AS expectativa_mediana,
-        minimo AS expectativa_minima,
-        maximo AS expectativa_maxima
+    indicador,
+    data::DATE AS data,
+    reuniao_ano,
+    reuniao_num,
+    media,
+    mediana,
+    desvio_padrao,
+    minimo,
+    maximo,
+    numero_respondentes,
+    base_calculo
     FROM read_parquet('data/silver/focus.parquet')
-    WHERE LOWER(indicador) LIKE '%selic%'
 )
 SELECT * FROM focus_clean;

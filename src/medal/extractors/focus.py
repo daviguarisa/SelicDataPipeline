@@ -13,14 +13,14 @@ def bronze_focus(
     output_path: str = "data/bronze/focus"
 ) -> None:
     """
-    Extrai informações de expectativas anuais do boletim focus a cada trimestre desde 2021.
+    Extrai informações de expectativas selic do boletim focus a cada trimestre desde 2021.
     A extração é feita com a biblioteca brdata.
     """
     intervalos = list(gerar_trimestres(ano_inicio))
 
     for inicio, fim in tqdm(intervalos, desc="Extraindo Focus", unit="trimestre"):
         try:
-            focus.expectativas_anuais(
+            focus.expectativas_selic(
                 indicador=indicador,
                 start_date=inicio,
                 end_date=fim,

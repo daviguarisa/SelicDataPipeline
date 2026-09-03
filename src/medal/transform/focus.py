@@ -41,20 +41,48 @@ def transform_focus_silver(
     df = pd.concat(dfs, ignore_index=True)
 
     # Padronização, conversão de tipos, limpeza e ordenação
-    df.columns = [col.strip().lower() for col in df.columns]
+    df = df.rename(
+        columns={
+            "Indicador": "indicador",
+            "Data": "data",
+            "Reuniao": "reuniao",
+            "Media": "media",
+            "Mediana": "mediana",
+            "DesvioPadrao": "desvio_padrao",
+            "Minimo": "minimo",
+            "Maximo": "maximo",
+            "numeroRespondentes": "numero_respondentes",
+            "baseCalculo": "base_calculo",
+        }
+    )
 
-    colunas_data = [col for col in df.columns if 'data' in col]
-    for col in colunas_data:
-        df[col] = pd.to_datetime(df[col], errors="coerce")
+    reuniao_split = df["reuniao"].str.extract(r"R(\d+)/(\d+)")
+    df["reuniao_num"] = pd.to_numeric(reuniao_split[0], errors="coerce").astype("Int64")
+    df["reuniao_ano"] = pd.to_numeric(reuniao_split[1], errors="coerce").astype("Int64")
+    df.drop(columns=["reuniao"], inplace=True)
 
-    colunas_metricas = ["mediana", "media", "desviopadrao", "minimo", "maximo"]
-    for col in colunas_metricas:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
+    df["data"] = pd.to_datetime(df["data"], format="%Y-%m-%d", errors="coerce").dt.date
 
-    df = df.drop_duplicates()
-    coluna_data_principal = colunas_data[0] if colunas_data else df.columns[0]
-    df = df.sort_values(by=coluna_data_principal).reset_index(drop=True)
+    df["numero_respondentes"] = df["numero_respondentes"].astype("Int64")
+    df["base_calculo"] = df["base_calculo"].astype("Int64")
+
+    colunas_float = ["media", "mediana", "desvio_padrao", "minimo", "maximo"]
+    df[colunas_float] = df[colunas_float].apply(pd.to_numeric, errors="coerce").round(2)
+
+    colunas_finais = [
+        "indicador",
+        "data",
+        "reuniao_ano",
+        "reuniao_num",
+        "media",
+        "mediana",
+        "desvio_padrao",
+        "minimo",
+        "maximo",
+        "numero_respondentes",
+        "base_calculo",
+    ]
+    df = df[colunas_finais]
 
     # Salva em Parquet
     df.to_parquet(output_file, index=False, engine="pyarrow")
