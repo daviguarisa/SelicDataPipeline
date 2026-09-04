@@ -20,6 +20,7 @@ def run_gold():
             create_table(conn, "queries/focus_gold.sql", "focus")
             create_table(conn, "queries/selic_gold.sql", "selic")
             create_table(conn, "queries/copom_gold.sql", "copom")
+            create_table(conn, "queries/expectativa_vs_realidade.sql", "expectativa_vs_realidade")
     except Exception as e:
         logging.error(f"Falha na execução de tabelas gold: {e}")
 
