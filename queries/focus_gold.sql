@@ -2,8 +2,8 @@ WITH focus_clean AS (
     SELECT 
     indicador,
     data::DATE AS data,
-    reuniao_ano,
     reuniao_num,
+    reuniao_ano,
     media,
     mediana,
     desvio_padrao,

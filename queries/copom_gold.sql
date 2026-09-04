@@ -1,5 +1,8 @@
 WITH copom_clean AS (
-    SELECT reuniao_num,
+    SELECT
+        reuniao_index, 
+        reuniao_num,
+        reuniao_ano,
         reuniao_data,
         vigencia_inicio,
         vigencia_fim,
