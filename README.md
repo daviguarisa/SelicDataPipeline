@@ -75,7 +75,7 @@ medal/
 │   └── silver/     # Dados limpos e padronizados (Parquet)
 ├── notebooks/      # Análises das tabelas finais
 │   ├── expectativas_vs_realidade.ipynb
-│   └──  predicao_selic.ipynb
+│   └── predicao_selic.ipynb
 ├── queries/        # Queries SQL modulares com CTEs para a camada Gold
 │   ├── copom_gold.sql
 │   ├── expectativa_vs_realidade.sql
