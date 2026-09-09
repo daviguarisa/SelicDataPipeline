@@ -23,7 +23,6 @@ A pipeline processa os dados em 3 camadas distintas para garantir linhagem, qual
     - Os dados limpos da Camada Silver são persistidos no **DuckDB**, onde são executadas consultas SQL e agregações.
     - Tabelas finais otimizadas para consumo direto.
 
----
 
 ## Ferramentas e Tecnologias
 
@@ -34,7 +33,6 @@ A pipeline processa os dados em 3 camadas distintas para garantir linhagem, qual
 - **Manipulação de Dados:** Pandas
 - **Gerar gráficos interativos:** Plotly
 
---
 
 ## Como Executar o projeto
 
@@ -67,7 +65,6 @@ uv sync
 uv run python main.py
 ```
 
----
 
 ## Estrutura do Projeto
 
@@ -96,7 +93,6 @@ medal/
 └── README.md
 ```
 
----
 
 ## Principais Análises Disponíveis (Notebooks)
     
