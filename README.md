@@ -71,6 +71,7 @@ uv run python main.py
 
 ## Estrutura do Projeto
 
+```text
 medal/
 ├── data/
 │   ├── bronze/     # Arquivos Parquet brutos
@@ -93,6 +94,7 @@ medal/
 ├── pyproject.toml  # Configurações do projeto e dependências
 ├── uv.lock         # Lockfile determinístico das dependências
 └── README.md
+```
 
 ---
 
