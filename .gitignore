@@ -15,3 +15,4 @@ data/
 # Database
 datalake.db
 datalake.db.wal
+__marimo__
