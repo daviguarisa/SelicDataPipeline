@@ -1,4 +1,4 @@
-# Medallion Selic Analytics
+# Selic Data Pipeline
 
 Uma pipeline de dados completa desenvolvida para extração, transformação e análise de dados da taxa **selic**. Estruturada sob a **arquitetura medalhão (bronze, silver, gold)**
 
@@ -32,7 +32,7 @@ A pipeline processa os dados em 3 camadas distintas para garantir linhagem, qual
 - **Extração de Dados:** [BRdata](https://pypi.org/project/brasil-data/)
 - **Manipulação de Dados:** Pandas
 - **Gerar gráficos interativos:** Plotly
-
+- **Carregar, interpretar e executar notebooks:** Marimo
 
 ## Como Executar o projeto
 
@@ -65,7 +65,11 @@ uv sync
 uv run python main.py
 ```
 
+4. **Carregar Notebooks**
 
+```bash
+marimo run notebooks/expectativa_vs_realidade.py notebooks/estimativa.py
+```
 ## Estrutura do Projeto
 
 ```text
@@ -74,8 +78,8 @@ medal/
 │   ├── bronze/     # Arquivos Parquet brutos
 │   └── silver/     # Dados limpos e padronizados (Parquet)
 ├── notebooks/      # Análises das tabelas finais
-│   ├── expectativas_vs_realidade.ipynb
-│   └── predicao_selic.ipynb
+│   ├── expectativas_vs_realidade.py
+│   └── estimativa_selic.py
 ├── queries/        # Queries SQL modulares com CTEs para a camada Gold
 │   ├── copom_gold.sql
 │   ├── expectativa_vs_realidade.sql
@@ -98,4 +102,4 @@ medal/
     
 - **Expectativa VS Realidade:** Esta análise realiza uma auditoria histórica de Expectativas Macroeconômicas, comparando retroativamente as projeções do mercado financeiro *(Boletim Focus)* com as decisões reais de taxa de juros adotadas pelo Banco Central do Brasil *(COPOM/Selic)*.
 
-- **Predição Selic:** Ferramenta Operacional Preditiva para as decisões da *Taxa Selic* no *COPOM*. Ele estende a auditoria histórica para o horizonte futuro, calibrando as projeções atuais do mercado financeiro via modelo heurístico e gerando gráficos preditivos interativos.
+- **Estimativa Selic:** Ferramenta Operacional Preditiva para as decisões da *Taxa Selic* no *COPOM*. Ele estende a auditoria histórica para o horizonte futuro, calibrando as projeções atuais do mercado financeiro via modelo heurístico e gerando gráficos preditivos interativos.

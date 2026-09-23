@@ -146,7 +146,7 @@ def _(
             x=[prox_data],
             y=[predicao_ajustada],
             mode="markers",
-            name=f"Predição R{prox_num}/{prox_ano}",
+            name=f"Estimativa R{prox_num}/{prox_ano}",
             marker=dict(color="#111827", size=14, symbol="star"),
             error_y=dict(
                 type="data",
@@ -157,7 +157,7 @@ def _(
                 width=6,
             ),
             hovertemplate=(
-                f"<b>Predição R{prox_num}/{prox_ano} ({janela_selecionada})</b><br>"
+                f"<b>Estimativa R{prox_num}/{prox_ano} ({janela_selecionada})</b><br>"
                 f"Focus Bruto: {focus_bruto:.2f}%<br>"
                 f"<b>Estimativa Calibrada: %{{y:.2f}}%</b><br>"
                 f"Intervalo Esperado: [{limite_inf:.2f}% a {limite_sup:.2f}%]<br>"
@@ -184,8 +184,8 @@ def _(
 
     fig.update_layout(
         title={
-            "text": f"<b>Focus vs COPOM — {janela_selecionada} + Predição R{prox_num}/{prox_ano}</b><br>"
-            f"<sup>Focus Bruto: {focus_bruto:.2f}%  |  <b>Predição Calibrada: {predicao_ajustada:.2f}%</b>  "
+            "text": f"<b>Focus vs COPOM — {janela_selecionada} + Estimativa R{prox_num}/{prox_ano}</b><br>"
+            f"<sup>Focus Bruto: {focus_bruto:.2f}%  |  <b>Estimativa Calibrada: {predicao_ajustada:.2f}%</b>  "
             f"(Intervalo: {limite_inf:.2f}% a {limite_sup:.2f}% | MAE: ±{mae:.2f} p.p.)</sup>",
             "x": 0.0,
             "xanchor": "left",
@@ -206,7 +206,7 @@ def _(
         height=520,
     )
 
-    header = mo.md("## Predição da Taxa Selic com Base no Boletim Focus")
+    header = mo.md("## Estimativa da Taxa Selic com Base no Boletim Focus")
     mo.vstack([header, toggle_janela, mo.ui.plotly(fig)])
 
 
